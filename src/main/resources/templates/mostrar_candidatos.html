@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Puedes Votar</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<header th:replace="/layouts/header :: header"></header>
+	<div class="container col-12">
+	<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-6 fst-italic">ahora votar a tu Artista o Banda Preferida</h1>
+      <p class="lead my-3">Solo con tu voto puedes ayudar a tu Artista o Banda prefirida a consagrarse como la mejor.</p>
+      <p class="lead mb-0"><a th:href="@{/votar}" class="text-white fw-bold">Ir a Votar</a></p>
+    </div>
+    <div class="row">
+		<div class="col-lg-4" th:each="candidato: ${candidatos}" >
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <h2 class="fw-normal" th:text="${candidato.nombre}"></h2>
+            <p class="fw-normal" th:text="${candidato.generoMusical}"></p>
+            <p th:text="${candidato.descripcion}">.</p>
+ 			<p><a th:href="@{/usuario/votar/}+${email}+'/candidato/'+${candidato.codigo}" id="editarcandidato" class="btn btn-warning">Votar</a></p>
+		</div>
+    </div>
+  </div>	
+  </div>
+	<br>
+	<br>
+	<footer th:replace="/layouts/footer :: footer"></footer>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/popper.js/2.9.3/umd/popper.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>
